@@ -1,16 +1,23 @@
 import Link from 'next/link';
+import { forwardRef } from 'react';
+
+const NavLink = forwardRef(({ href, onClick, children }, ref) => {
+  return (
+    <a href={href} onClick={onClick} ref={ref}>{children}</a>
+  );
+});
 
 const Menu = () => {
   return (
     <nav>
-      <Link href="/">
-        <a>Home</a>
+      <Link href="/" passHref>
+        <NavLink>Home</NavLink>
       </Link>
-      <Link href="/about">
-        <a>About</a>
+      <Link href="/about" passHref>
+        <NavLink>About</NavLink>
       </Link>
-      <Link href="/contact">
-        <a>Contact</a>
+      <Link href="/contact" passHref>
+        <NavLink>Contact</NavLink>
       </Link>
     </nav>
   );
