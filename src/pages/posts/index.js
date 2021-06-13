@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
-function Posts() {
-  const [posts, setPosts] = useState([]);
+function Posts({ posts }) {
+  // const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(response => response.json())
-    .then(data => setPosts(data.slice(0, 10)))
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://jsonplaceholder.typicode.com/posts')
+  //   .then(response => response.json())
+  //   .then(data => setPosts(data.slice(0, 10)))
+  // }, []);
 
   return (
     <div>
@@ -20,6 +20,19 @@ function Posts() {
       )}
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await response.json();
+
+  // console.log('data: ', data);
+
+  return {
+    props: {
+      posts: data.slice(0, 10),
+    }
+  }
 }
 
 export default Posts;
