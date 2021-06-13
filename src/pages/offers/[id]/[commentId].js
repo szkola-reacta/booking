@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 
 function OfferComments() {
   const router = useRouter();
-  console.log(router);
+  // console.log(router);
   const { id, commentId } = router.query;
   return (
     <div>

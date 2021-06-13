@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 
 function Offer() {
   const router = useRouter();
-  console.log(router);
+  // console.log(router);
   const { id } = router.query;
   return (
     <div>

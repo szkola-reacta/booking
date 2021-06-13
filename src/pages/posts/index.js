@@ -1,4 +1,5 @@
 // import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 function Posts({ posts }) {
   // const [posts, setPosts] = useState([]);
@@ -14,7 +15,13 @@ function Posts({ posts }) {
       <h1>Posts</h1>
       {posts && posts.map((post) =>
         <div key={`post-${post.id}`}>
-          <h3>{post.title}</h3>
+          <h3>
+            <Link href={`/posts/${post.id}`}>
+              <a>
+                {post.title}
+              </a>
+            </Link>
+          </h3>
           <p>{post.body}</p>
         </div>
       )}
